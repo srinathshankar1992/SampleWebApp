@@ -11,17 +11,29 @@ classpath = "WebContent/WEB-INF/lib/checkstyle-7.8.2-all.jar"/>
 <mkdir dir="dist"/>
 </target>
 
+<target name ="compile" depends="init">
+<javac srcdir = "src" debug = "true" destdir ="build/classes" >
+<classpath refid = "compile.classpath"/>
+</javac>
+</target>
+
 <target name ="checkstyle">
 <checkstyle config = "sun_checks.xml">
 <fileset dir ="src/example" includes = "**/*.java"/>
 <formatter type = "xml" toFile= "checkstyle_errors.xml"/>
 </checkstyle>
-
-
 </target>
-<target name ="compile" depends="init">
-<javac srcdir = "src" debug = "true" destdir ="build/classes" >
-<classpath refid = "compile.classpath"/>
-</javac>
+
+<target name="junit">
+<junit printsummary="yes" haltonfailure="yes">
+<classpath>
+<pathelement location="D:/Jenkins/SampleWebApp/build/classes"/>
+<pathelement path="D:/Jenkins/SampleWebApp/WebContent/WEB-INF/lib/junit.jar"/>
+<pathelement path="D:/Jenkins/SampleWebApp/WebContent/WEB-INF/lib/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+</classpath>
+<test name="junit.TestCalculator" haltonfailure="no" outfile="TestCalculator_junitResult.txt"> 
+<formatter type ="plain"/>
+</test>
+</junit>
 </target>
 </project>	
