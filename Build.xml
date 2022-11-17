@@ -18,7 +18,7 @@ classpath = "WebContent/WEB-INF/lib/checkstyle-7.8.2-all.jar"/>
 </target>
 
 <target name ="checkstyle">
-<checkstyle config = "sun_checks.xml" failOnVioltion="false">
+<checkstyle config = "sun_checks.xml" failOnViolation="false">
 <fileset dir ="src/example" includes = "**/*.java"/>
 <formatter type = "xml" toFile= "checkstyle_errors.xml"/>
 </checkstyle>
